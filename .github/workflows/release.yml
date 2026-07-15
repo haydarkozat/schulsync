@@ -1,0 +1,64 @@
+name: Release
+
+# Auslöser: ein Versions-Tag (v0.1.0, v0.2.0, …).
+# Veröffentlicht auf PyPI via Trusted Publishing (OIDC, keine Tokens)
+# und legt ein GitHub-Release mit den Build-Artefakten an.
+
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  build:
+    name: Paket bauen
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Bauen (sdist + wheel)
+        run: |
+          pip install build twine
+          python -m build
+          twine check dist/*
+      - uses: actions/upload-artifact@v7
+        with:
+          name: dist
+          path: dist/
+
+  pypi:
+    name: Auf PyPI veröffentlichen
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/schulsync
+    permissions:
+      id-token: write  # OIDC für PyPI Trusted Publishing
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1
+
+  github-release:
+    name: GitHub-Release anlegen
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: dist
+          path: dist/
+      - name: Release erstellen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/* \
+            --title "SchulSync $GITHUB_REF_NAME" \
+            --notes "Änderungen: siehe [CHANGELOG.md](https://github.com/${GITHUB_REPOSITORY}/blob/main/CHANGELOG.md)"
