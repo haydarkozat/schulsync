@@ -3,6 +3,7 @@
 **Schuljahreswechsel ohne Handarbeit: Schulverwaltung → Active Directory.**
 
 [![CI](https://github.com/haydarkozat/schulsync/actions/workflows/ci.yml/badge.svg)](https://github.com/haydarkozat/schulsync/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/schulsync?color=3775a9&logo=pypi&logoColor=white)](https://pypi.org/project/schulsync/)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-3776ab?logo=python&logoColor=white)
 ![Getestet gegen](https://img.shields.io/badge/getestet%20gegen-Samba%20AD%20DC-1a7f4e)
 ![Lizenz](https://img.shields.io/badge/Lizenz-MIT-blue)
@@ -120,6 +121,7 @@ schlicht die Wahrheit:
 ## Im echten Schulnetz
 
 ```bash
+pip install schulsync                               # frisch von PyPI (Python 3.11+)
 cp examples/schulsync.example.yaml schulsync.yaml   # anpassen: Server, Basis-DN, Schema
 export SCHULSYNC_LDAP_PASSWORT='…'                  # Bind-Passwort des Dienstkontos
 schulsync check                                     # Verbindung & Konfiguration prüfen
