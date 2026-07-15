@@ -1,0 +1,42 @@
+# SchulSync-Konfiguration – Vorlage.
+# Kopieren nach schulsync.yaml und anpassen. Das LDAP-Passwort kommt NIE
+# hier hinein, sondern in die Umgebungsvariable SCHULSYNC_LDAP_PASSWORT.
+
+ldap:
+  server: ldaps://dc1.schule.local        # LDAPS empfohlen; ldap:// erzwingt STARTTLS
+  bind_benutzer: svc-schulsync@schule.local
+  base_dn: DC=schule,DC=local
+  tls_verifizieren: true                  # nur im Lab mit Self-Signed-Zertifikat: false
+
+schule:
+  name: Muster-Realschule Beispielstadt   # erscheint auf Reports und Briefen
+  it_kontakt: IT-Büro, Raum 042 (it@schule.example)
+
+struktur:                                 # OU-/Gruppenlayout unter base_dn
+  basis_ou: SchulSync
+  schueler_ou: Schueler
+  lehrkraefte_ou: Lehrkraefte
+  abgaenger_ou: Abgaenger
+  klassen_gruppen_praefix: "Klasse-"
+  gruppe_alle_schueler: Alle-Schueler
+  gruppe_alle_lehrkraefte: Alle-Lehrkraefte
+
+konten:
+  benutzername_schema: "{vorname}.{nachname}"   # → emma.fischer
+  upn_suffix: "@schule.local"
+  home_laufwerk: "H:"                           # optional – weglassen, wenn ungenutzt
+  home_pfad: '\\fs01\homes\{benutzername}'      # optional
+  passwort_woerter: 2                           # Tiger-Wolke-47
+
+aufbewahrung:
+  abgaenger_tage: 90    # Löschkonzept: nach dieser Frist löscht `schulsync cleanup`
+
+csv:
+  profil: schild-nrw    # schild-nrw | asv-bw | generisch
+  # trennzeichen: ";"   # nur setzen, wenn die Auto-Erkennung nicht passt
+  # Bei eigenem Export (profil: generisch) die Spaltennamen zuordnen:
+  # spalten:
+  #   id: Schueler_ID
+  #   vorname: Rufname
+  #   nachname: Name
+  #   klasse: Klassenbezeichnung

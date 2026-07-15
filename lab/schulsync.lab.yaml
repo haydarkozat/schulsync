@@ -1,0 +1,25 @@
+# SchulSync-Konfiguration für das Docker-Lab (lab/docker-compose.yml).
+#
+# Vor dem ersten Lauf:
+#   export SCHULSYNC_LDAP_PASSWORT="Lab-Kennwort-2026"
+ldap:
+  server: ldaps://localhost:1636
+  bind_benutzer: Administrator@schule.local
+  base_dn: DC=schule,DC=local
+  tls_verifizieren: false   # Lab-DC hat ein selbstsigniertes Zertifikat
+
+schule:
+  name: Beispiel-Gesamtschule Musterstadt
+  it_kontakt: IT-Büro, Raum 042 (it@schule.example)
+
+konten:
+  benutzername_schema: "{vorname}.{nachname}"
+  upn_suffix: "@schule.local"
+  home_laufwerk: "H:"
+  home_pfad: '\\dc1\homes\{benutzername}'
+
+aufbewahrung:
+  abgaenger_tage: 90
+
+csv:
+  profil: schild-nrw

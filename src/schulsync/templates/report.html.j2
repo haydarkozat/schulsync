@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SchulSync-Plan · {{ schule }} · {{ zeitpunkt }}</title>
+<style>
+  :root {
+    --tinte: #1a2332; --grau: #5c6675; --linie: #e3e7ee; --papier: #f6f8fb;
+    --gruen: #1a7f4e; --gruen-bg: #e7f6ee;
+    --blau: #1f5fbf; --blau-bg: #e9f1fd;
+    --gelb: #9a6700; --gelb-bg: #fdf3d7;
+    --rot: #b3362c; --rot-bg: #fdecea;
+    --lila: #6f42c1; --lila-bg: #f1ebfb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    color: var(--tinte); background: var(--papier);
+    margin: 0; padding: 2.5rem 1.5rem; line-height: 1.5;
+  }
+  .blatt { max-width: 60rem; margin: 0 auto; }
+  header { display: flex; justify-content: space-between; align-items: baseline;
+           flex-wrap: wrap; gap: .5rem; border-bottom: 3px solid var(--tinte);
+           padding-bottom: .75rem; margin-bottom: 1.5rem; }
+  h1 { font-size: 1.5rem; margin: 0; }
+  h1 small { color: var(--grau); font-weight: 400; }
+  .meta { color: var(--grau); font-size: .9rem; text-align: right; }
+  .karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+            gap: .75rem; margin-bottom: 2rem; }
+  .karte { background: #fff; border: 1px solid var(--linie); border-radius: .6rem;
+           padding: .9rem 1rem; }
+  .karte .zahl { font-size: 1.9rem; font-weight: 700; line-height: 1.1; }
+  .karte .label { font-size: .8rem; color: var(--grau); text-transform: uppercase;
+                  letter-spacing: .04em; }
+  .karte.gruen .zahl { color: var(--gruen); } .karte.blau .zahl { color: var(--blau); }
+  .karte.gelb .zahl { color: var(--gelb); }  .karte.rot .zahl { color: var(--rot); }
+  .karte.lila .zahl { color: var(--lila); }
+  section { background: #fff; border: 1px solid var(--linie); border-radius: .6rem;
+            margin-bottom: 1.25rem; overflow: hidden; }
+  section > h2 { font-size: 1rem; margin: 0; padding: .7rem 1rem; display: flex;
+                 align-items: center; gap: .5rem; }
+  .marke { display: inline-block; min-width: 1.6rem; text-align: center; padding: .1rem .45rem;
+           border-radius: 99px; font-size: .8rem; font-weight: 700; }
+  section.gruen > h2 { background: var(--gruen-bg); } section.gruen .marke { background: var(--gruen); color:#fff; }
+  section.blau  > h2 { background: var(--blau-bg); }  section.blau  .marke { background: var(--blau); color:#fff; }
+  section.gelb  > h2 { background: var(--gelb-bg); }  section.gelb  .marke { background: var(--gelb); color:#fff; }
+  section.rot   > h2 { background: var(--rot-bg); }   section.rot   .marke { background: var(--rot); color:#fff; }
+  section.lila  > h2 { background: var(--lila-bg); }  section.lila  .marke { background: var(--lila); color:#fff; }
+  table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+  th { text-align: left; color: var(--grau); font-weight: 600; font-size: .8rem;
+       text-transform: uppercase; letter-spacing: .03em; }
+  th, td { padding: .5rem 1rem; border-top: 1px solid var(--linie); }
+  tbody tr:hover { background: var(--papier); }
+  code { background: var(--papier); border: 1px solid var(--linie); border-radius: .3rem;
+         padding: .05rem .35rem; font-size: .88em; }
+  .pfeil { color: var(--grau); padding: 0 .3rem; }
+  .hinweis { background: #fff; border: 1px dashed var(--linie); border-radius: .6rem;
+             padding: .8rem 1rem; color: var(--grau); font-size: .88rem; }
+  .konflikt td:last-child { color: var(--rot); }
+  footer { margin-top: 2rem; color: var(--grau); font-size: .8rem;
+           border-top: 1px solid var(--linie); padding-top: .75rem; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    section, .karte { border-color: #bbb; break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="blatt">
+  <header>
+    <h1>SchulSync-Plan <small>· {{ schule }}</small></h1>
+    <div class="meta">
+      {{ zeitpunkt }}<br>
+      Quelle: <code>{{ quelle }}</code> · Ziel: <code>{{ ziel }}</code><br>
+      Modus: <strong>{{ modus }}</strong>
+    </div>
+  </header>
+
+  <div class="karten">
+    <div class="karte gruen"><div class="zahl">{{ plan.anlegen | length }}</div><div class="label">Anlegen</div></div>
+    <div class="karte blau"><div class="zahl">{{ plan.verschieben | length }}</div><div class="label">Klassenwechsel</div></div>
+    <div class="karte gelb"><div class="zahl">{{ plan.umbenennen | length }}</div><div class="label">Umbenennen</div></div>
+    <div class="karte lila"><div class="zahl">{{ plan.reaktivieren | length }}</div><div class="label">Reaktivieren</div></div>
+    <div class="karte rot"><div class="zahl">{{ plan.deaktivieren | length }}</div><div class="label">Deaktivieren</div></div>
+    <div class="karte"><div class="zahl">{{ plan.unveraendert }}</div><div class="label">Unverändert</div></div>
+  </div>
+
+  {% if plan.konflikte %}
+  <section class="rot">
+    <h2><span class="marke">{{ plan.konflikte | length }}</span> Konflikte – bitte zuerst klären</h2>
+    <table>
+      <thead><tr><th>Betrifft</th><th>Grund</th></tr></thead>
+      <tbody>
+      {% for k in plan.konflikte %}
+        <tr class="konflikt"><td>{{ k.betrifft }}</td><td>{{ k.grund }}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  {% endif %}
+
+  {% if plan.anlegen %}
+  <section class="gruen">
+    <h2><span class="marke">＋</span> Anlegen ({{ plan.anlegen | length }})</h2>
+    <table>
+      <thead><tr><th>Name</th><th>Klasse</th><th>Benutzername</th><th>Rolle</th></tr></thead>
+      <tbody>
+      {% for a in plan.anlegen %}
+        <tr>
+          <td>{{ a.person.anzeigename }}</td>
+          <td>{{ a.person.klasse or "–" }}</td>
+          <td><code>{{ a.benutzername }}</code></td>
+          <td>{{ "Lehrkraft" if a.person.rolle.value == "lehrkraft" else "Schüler:in" }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  {% endif %}
+
+  {% if plan.verschieben %}
+  <section class="blau">
+    <h2><span class="marke">⇄</span> Klassenwechsel ({{ plan.verschieben | length }})</h2>
+    <table>
+      <thead><tr><th>Name</th><th>Benutzername</th><th>Wechsel</th></tr></thead>
+      <tbody>
+      {% for v in plan.verschieben %}
+        <tr>
+          <td>{{ v.konto.anzeigename }}</td>
+          <td><code>{{ v.konto.benutzername }}</code></td>
+          <td>{{ v.von_klasse or "–" }}<span class="pfeil">→</span><strong>{{ v.nach_klasse }}</strong></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  {% endif %}
+
+  {% if plan.umbenennen %}
+  <section class="gelb">
+    <h2><span class="marke">✎</span> Umbenennen ({{ plan.umbenennen | length }})</h2>
+    <table>
+      <thead><tr><th>Benutzername</th><th>Bisher</th><th>Neu</th></tr></thead>
+      <tbody>
+      {% for u in plan.umbenennen %}
+        <tr>
+          <td><code>{{ u.konto.benutzername }}</code></td>
+          <td>{{ u.konto.anzeigename }}</td>
+          <td><strong>{{ u.neuer_vorname }} {{ u.neuer_nachname }}</strong></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  {% endif %}
+
+  {% if plan.reaktivieren %}
+  <section class="lila">
+    <h2><span class="marke">↻</span> Reaktivieren – Rückkehrer ({{ plan.reaktivieren | length }})</h2>
+    <table>
+      <thead><tr><th>Name</th><th>Benutzername</th><th>Neue Klasse</th></tr></thead>
+      <tbody>
+      {% for r in plan.reaktivieren %}
+        <tr>
+          <td>{{ r.konto.anzeigename }}</td>
+          <td><code>{{ r.konto.benutzername }}</code></td>
+          <td><strong>{{ r.nach_klasse or "–" }}</strong></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  {% endif %}
+
+  {% if plan.deaktivieren %}
+  <section class="rot">
+    <h2><span class="marke">⏻</span> Deaktivieren – Abgänger ({{ plan.deaktivieren | length }})</h2>
+    <table>
+      <thead><tr><th>Name</th><th>Benutzername</th><th>Bisherige Klasse</th><th>Weiteres Vorgehen</th></tr></thead>
+      <tbody>
+      {% for d in plan.deaktivieren %}
+        <tr>
+          <td>{{ d.konto.anzeigename }}</td>
+          <td><code>{{ d.konto.benutzername }}</code></td>
+          <td>{{ d.konto.klasse or "–" }}</td>
+          <td>Abgänger-OU, Löschung nach {{ frist_tage }} Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  {% endif %}
+
+  {% if plan.leer and not plan.konflikte %}
+  <p class="hinweis">✔ Keine Abweichungen – Active Directory und Schulverwaltung sind synchron.</p>
+  {% endif %}
+
+  <footer>
+    Erzeugt von <strong>SchulSync {{ version }}</strong> am {{ zeitpunkt }}.
+    Dieses Dokument enthält personenbezogene Daten – vertraulich behandeln und
+    nach Gebrauch löschen (Art. 5 Abs. 1 lit. e DSGVO).
+  </footer>
+</div>
+</body>
+</html>

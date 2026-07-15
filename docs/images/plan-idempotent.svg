@@ -1,0 +1,121 @@
+<svg class="rich-terminal" viewBox="0 0 1190 391.59999999999997" xmlns="http://www.w3.org/2000/svg">
+    <!-- Generated with Rich https://www.textualize.io -->
+    <style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-1589470968-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-1589470968-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-1589470968-r1 { fill: #98a84b }
+.terminal-1589470968-r2 { fill: #c5c8c6 }
+.terminal-1589470968-r3 { fill: #98729f }
+.terminal-1589470968-r4 { fill: #ff2c7a }
+.terminal-1589470968-r5 { fill: #68a0b3;font-weight: bold }
+.terminal-1589470968-r6 { fill: #c5c8c6;font-weight: bold }
+.terminal-1589470968-r7 { fill: #68a0b3 }
+.terminal-1589470968-r8 { fill: #608ab1 }
+.terminal-1589470968-r9 { fill: #d0b344 }
+.terminal-1589470968-r10 { fill: #cc555a }
+.terminal-1589470968-r11 { fill: #868887 }
+.terminal-1589470968-r12 { fill: #4e707b }
+    </style>
+
+    <defs>
+    <clipPath id="terminal-1589470968-clip-terminal">
+      <rect x="0" y="0" width="1170.1999999999998" height="340.59999999999997" />
+    </clipPath>
+    <clipPath id="terminal-1589470968-line-0">
+    <rect x="0" y="1.5" width="1171.2" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1589470968-line-1">
+    <rect x="0" y="25.9" width="1171.2" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1589470968-line-2">
+    <rect x="0" y="50.3" width="1171.2" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1589470968-line-3">
+    <rect x="0" y="74.7" width="1171.2" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1589470968-line-4">
+    <rect x="0" y="99.1" width="1171.2" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1589470968-line-5">
+    <rect x="0" y="123.5" width="1171.2" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1589470968-line-6">
+    <rect x="0" y="147.9" width="1171.2" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1589470968-line-7">
+    <rect x="0" y="172.3" width="1171.2" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1589470968-line-8">
+    <rect x="0" y="196.7" width="1171.2" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1589470968-line-9">
+    <rect x="0" y="221.1" width="1171.2" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1589470968-line-10">
+    <rect x="0" y="245.5" width="1171.2" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1589470968-line-11">
+    <rect x="0" y="269.9" width="1171.2" height="24.65"/>
+            </clipPath>
+<clipPath id="terminal-1589470968-line-12">
+    <rect x="0" y="294.3" width="1171.2" height="24.65"/>
+            </clipPath>
+    </defs>
+
+    <rect fill="#292929" stroke="rgba(255,255,255,0.35)" stroke-width="1" x="1" y="1" width="1188" height="389.6" rx="8"/><text class="terminal-1589470968-title" fill="#c5c8c6" text-anchor="middle" x="594" y="27">schulsync&#160;plan&#160;–&#160;zweiter&#160;Lauf&#160;(idempotent)</text>
+            <g transform="translate(26,22)">
+            <circle cx="0" cy="0" r="7" fill="#ff5f57"/>
+            <circle cx="22" cy="0" r="7" fill="#febc2e"/>
+            <circle cx="44" cy="0" r="7" fill="#28c840"/>
+            </g>
+        
+    <g transform="translate(9, 41)" clip-path="url(#terminal-1589470968-clip-terminal)">
+    
+    <g class="terminal-1589470968-matrix">
+    <text class="terminal-1589470968-r1" x="0" y="20" textLength="12.2" clip-path="url(#terminal-1589470968-line-0)">✔</text><text class="terminal-1589470968-r3" x="24.4" y="20" textLength="463.6" clip-path="url(#terminal-1589470968-line-0)">/Users/haydarkozat/schulsync/examples/</text><text class="terminal-1589470968-r4" x="488" y="20" textLength="268.4" clip-path="url(#terminal-1589470968-line-0)">schild-export-2026.csv</text><text class="terminal-1589470968-r2" x="756.4" y="20" textLength="24.4" clip-path="url(#terminal-1589470968-line-0)">:&#160;</text><text class="terminal-1589470968-r5" x="780.8" y="20" textLength="36.6" clip-path="url(#terminal-1589470968-line-0)">149</text><text class="terminal-1589470968-r2" x="817.4" y="20" textLength="183" clip-path="url(#terminal-1589470968-line-0)">&#160;Schüler:innen&#160;</text><text class="terminal-1589470968-r6" x="1000.4" y="20" textLength="12.2" clip-path="url(#terminal-1589470968-line-0)">(</text><text class="terminal-1589470968-r2" x="1012.6" y="20" textLength="48.8" clip-path="url(#terminal-1589470968-line-0)">utf-</text><text class="terminal-1589470968-r5" x="1061.4" y="20" textLength="12.2" clip-path="url(#terminal-1589470968-line-0)">8</text><text class="terminal-1589470968-r2" x="1073.6" y="20" textLength="73.2" clip-path="url(#terminal-1589470968-line-0)">-sig,&#160;</text><text class="terminal-1589470968-r2" x="1171.2" y="20" textLength="12.2" clip-path="url(#terminal-1589470968-line-0)">
+</text><text class="terminal-1589470968-r2" x="0" y="44.4" textLength="158.6" clip-path="url(#terminal-1589470968-line-1)">Trennzeichen&#160;</text><text class="terminal-1589470968-r1" x="158.6" y="44.4" textLength="36.6" clip-path="url(#terminal-1589470968-line-1)">&#x27;;&#x27;</text><text class="terminal-1589470968-r6" x="195.2" y="44.4" textLength="12.2" clip-path="url(#terminal-1589470968-line-1)">)</text><text class="terminal-1589470968-r2" x="1171.2" y="44.4" textLength="12.2" clip-path="url(#terminal-1589470968-line-1)">
+</text><text class="terminal-1589470968-r1" x="0" y="68.8" textLength="12.2" clip-path="url(#terminal-1589470968-line-2)">✔</text><text class="terminal-1589470968-r3" x="24.4" y="68.8" textLength="463.6" clip-path="url(#terminal-1589470968-line-2)">/Users/haydarkozat/schulsync/examples/</text><text class="terminal-1589470968-r4" x="488" y="68.8" textLength="183" clip-path="url(#terminal-1589470968-line-2)">lehrkraefte.csv</text><text class="terminal-1589470968-r2" x="671" y="68.8" textLength="24.4" clip-path="url(#terminal-1589470968-line-2)">:&#160;</text><text class="terminal-1589470968-r5" x="695.4" y="68.8" textLength="12.2" clip-path="url(#terminal-1589470968-line-2)">5</text><text class="terminal-1589470968-r2" x="707.6" y="68.8" textLength="146.4" clip-path="url(#terminal-1589470968-line-2)">&#160;Lehrkräfte&#160;</text><text class="terminal-1589470968-r6" x="854" y="68.8" textLength="12.2" clip-path="url(#terminal-1589470968-line-2)">(</text><text class="terminal-1589470968-r2" x="866.2" y="68.8" textLength="48.8" clip-path="url(#terminal-1589470968-line-2)">utf-</text><text class="terminal-1589470968-r5" x="915" y="68.8" textLength="12.2" clip-path="url(#terminal-1589470968-line-2)">8</text><text class="terminal-1589470968-r2" x="927.2" y="68.8" textLength="231.8" clip-path="url(#terminal-1589470968-line-2)">-sig,&#160;Trennzeichen&#160;</text><text class="terminal-1589470968-r2" x="1171.2" y="68.8" textLength="12.2" clip-path="url(#terminal-1589470968-line-2)">
+</text><text class="terminal-1589470968-r1" x="0" y="93.2" textLength="36.6" clip-path="url(#terminal-1589470968-line-3)">&#x27;;&#x27;</text><text class="terminal-1589470968-r6" x="36.6" y="93.2" textLength="12.2" clip-path="url(#terminal-1589470968-line-3)">)</text><text class="terminal-1589470968-r2" x="1171.2" y="93.2" textLength="12.2" clip-path="url(#terminal-1589470968-line-3)">
+</text><text class="terminal-1589470968-r1" x="0" y="117.6" textLength="12.2" clip-path="url(#terminal-1589470968-line-4)">✔</text><text class="terminal-1589470968-r2" x="12.2" y="117.6" textLength="183" clip-path="url(#terminal-1589470968-line-4)">&#160;AD&#160;verbunden:&#160;</text><text class="terminal-1589470968-r5" x="195.2" y="117.6" textLength="36.6" clip-path="url(#terminal-1589470968-line-4)">178</text><text class="terminal-1589470968-r2" x="231.8" y="117.6" textLength="244" clip-path="url(#terminal-1589470968-line-4)">&#160;verwaltete&#160;Konten,&#160;</text><text class="terminal-1589470968-r5" x="475.8" y="117.6" textLength="36.6" clip-path="url(#terminal-1589470968-line-4)">234</text><text class="terminal-1589470968-r2" x="512.4" y="117.6" textLength="402.6" clip-path="url(#terminal-1589470968-line-4)">&#160;Benutzernamen&#160;domänenweit&#160;belegt</text><text class="terminal-1589470968-r2" x="1171.2" y="117.6" textLength="12.2" clip-path="url(#terminal-1589470968-line-4)">
+</text><text class="terminal-1589470968-r7" x="0" y="142" textLength="24.4" clip-path="url(#terminal-1589470968-line-5)">╭─</text><text class="terminal-1589470968-r7" x="24.4" y="142" textLength="329.4" clip-path="url(#terminal-1589470968-line-5)">───────────────────────────</text><text class="terminal-1589470968-r5" x="366" y="142" textLength="170.8" clip-path="url(#terminal-1589470968-line-5)">SchulSync-Plan</text><text class="terminal-1589470968-r7" x="536.8" y="142" textLength="268.4" clip-path="url(#terminal-1589470968-line-5)">&#160;→&#160;DC=schule,DC=local&#160;</text><text class="terminal-1589470968-r7" x="805.2" y="142" textLength="341.6" clip-path="url(#terminal-1589470968-line-5)">────────────────────────────</text><text class="terminal-1589470968-r7" x="1146.8" y="142" textLength="24.4" clip-path="url(#terminal-1589470968-line-5)">─╮</text><text class="terminal-1589470968-r2" x="1171.2" y="142" textLength="12.2" clip-path="url(#terminal-1589470968-line-5)">
+</text><text class="terminal-1589470968-r7" x="0" y="166.4" textLength="12.2" clip-path="url(#terminal-1589470968-line-6)">│</text><text class="terminal-1589470968-r6" x="24.4" y="166.4" textLength="36.6" clip-path="url(#terminal-1589470968-line-6)">&#160;&#160;0</text><text class="terminal-1589470968-r1" x="85.4" y="166.4" textLength="109.8" clip-path="url(#terminal-1589470968-line-6)">＋&#160;Anlegen</text><text class="terminal-1589470968-r7" x="1159" y="166.4" textLength="12.2" clip-path="url(#terminal-1589470968-line-6)">│</text><text class="terminal-1589470968-r2" x="1171.2" y="166.4" textLength="12.2" clip-path="url(#terminal-1589470968-line-6)">
+</text><text class="terminal-1589470968-r7" x="0" y="190.8" textLength="12.2" clip-path="url(#terminal-1589470968-line-7)">│</text><text class="terminal-1589470968-r6" x="24.4" y="190.8" textLength="36.6" clip-path="url(#terminal-1589470968-line-7)">&#160;&#160;0</text><text class="terminal-1589470968-r8" x="85.4" y="190.8" textLength="195.2" clip-path="url(#terminal-1589470968-line-7)">⇄&#160;Klassenwechsel</text><text class="terminal-1589470968-r7" x="1159" y="190.8" textLength="12.2" clip-path="url(#terminal-1589470968-line-7)">│</text><text class="terminal-1589470968-r2" x="1171.2" y="190.8" textLength="12.2" clip-path="url(#terminal-1589470968-line-7)">
+</text><text class="terminal-1589470968-r7" x="0" y="215.2" textLength="12.2" clip-path="url(#terminal-1589470968-line-8)">│</text><text class="terminal-1589470968-r6" x="24.4" y="215.2" textLength="36.6" clip-path="url(#terminal-1589470968-line-8)">&#160;&#160;0</text><text class="terminal-1589470968-r9" x="85.4" y="215.2" textLength="146.4" clip-path="url(#terminal-1589470968-line-8)">✎&#160;Umbenennen</text><text class="terminal-1589470968-r7" x="1159" y="215.2" textLength="12.2" clip-path="url(#terminal-1589470968-line-8)">│</text><text class="terminal-1589470968-r2" x="1171.2" y="215.2" textLength="12.2" clip-path="url(#terminal-1589470968-line-8)">
+</text><text class="terminal-1589470968-r7" x="0" y="239.6" textLength="12.2" clip-path="url(#terminal-1589470968-line-9)">│</text><text class="terminal-1589470968-r6" x="24.4" y="239.6" textLength="36.6" clip-path="url(#terminal-1589470968-line-9)">&#160;&#160;0</text><text class="terminal-1589470968-r3" x="85.4" y="239.6" textLength="329.4" clip-path="url(#terminal-1589470968-line-9)">↻&#160;Reaktivieren&#160;(Rückkehrer)</text><text class="terminal-1589470968-r7" x="1159" y="239.6" textLength="12.2" clip-path="url(#terminal-1589470968-line-9)">│</text><text class="terminal-1589470968-r2" x="1171.2" y="239.6" textLength="12.2" clip-path="url(#terminal-1589470968-line-9)">
+</text><text class="terminal-1589470968-r7" x="0" y="264" textLength="12.2" clip-path="url(#terminal-1589470968-line-10)">│</text><text class="terminal-1589470968-r6" x="24.4" y="264" textLength="36.6" clip-path="url(#terminal-1589470968-line-10)">&#160;&#160;0</text><text class="terminal-1589470968-r10" x="85.4" y="264" textLength="305" clip-path="url(#terminal-1589470968-line-10)">⏻&#160;Deaktivieren&#160;(Abgänger)</text><text class="terminal-1589470968-r7" x="1159" y="264" textLength="12.2" clip-path="url(#terminal-1589470968-line-10)">│</text><text class="terminal-1589470968-r2" x="1171.2" y="264" textLength="12.2" clip-path="url(#terminal-1589470968-line-10)">
+</text><text class="terminal-1589470968-r7" x="0" y="288.4" textLength="12.2" clip-path="url(#terminal-1589470968-line-11)">│</text><text class="terminal-1589470968-r6" x="24.4" y="288.4" textLength="36.6" clip-path="url(#terminal-1589470968-line-11)">154</text><text class="terminal-1589470968-r11" x="85.4" y="288.4" textLength="158.6" clip-path="url(#terminal-1589470968-line-11)">=&#160;Unverändert</text><text class="terminal-1589470968-r7" x="1159" y="288.4" textLength="12.2" clip-path="url(#terminal-1589470968-line-11)">│</text><text class="terminal-1589470968-r2" x="1171.2" y="288.4" textLength="12.2" clip-path="url(#terminal-1589470968-line-11)">
+</text><text class="terminal-1589470968-r7" x="0" y="312.8" textLength="24.4" clip-path="url(#terminal-1589470968-line-12)">╰─</text><text class="terminal-1589470968-r7" x="24.4" y="312.8" textLength="366" clip-path="url(#terminal-1589470968-line-12)">──────────────────────────────</text><text class="terminal-1589470968-r12" x="402.6" y="312.8" textLength="353.8" clip-path="url(#terminal-1589470968-line-12)">Es&#160;wurde&#160;noch&#160;nichts&#160;geändert</text><text class="terminal-1589470968-r7" x="768.6" y="312.8" textLength="378.2" clip-path="url(#terminal-1589470968-line-12)">───────────────────────────────</text><text class="terminal-1589470968-r7" x="1146.8" y="312.8" textLength="24.4" clip-path="url(#terminal-1589470968-line-12)">─╯</text><text class="terminal-1589470968-r2" x="1171.2" y="312.8" textLength="12.2" clip-path="url(#terminal-1589470968-line-12)">
+</text><text class="terminal-1589470968-r1" x="0" y="337.2" textLength="732" clip-path="url(#terminal-1589470968-line-13)">✔&#160;Keine&#160;Abweichungen&#160;–&#160;AD&#160;und&#160;Schulverwaltung&#160;sind&#160;synchron.</text><text class="terminal-1589470968-r2" x="1171.2" y="337.2" textLength="12.2" clip-path="url(#terminal-1589470968-line-13)">
+</text>
+    </g>
+    </g>
+</svg>

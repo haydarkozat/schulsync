@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Zugangsdaten {{ klasse }} · {{ schule }}</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+         color: #1a2332; margin: 0; line-height: 1.55; }
+  .brief { padding: 2.2cm 2cm; page-break-after: always; max-width: 21cm; margin: 0 auto; }
+  .brief:last-child { page-break-after: auto; }
+  .kopf { display: flex; justify-content: space-between; border-bottom: 2px solid #1a2332;
+          padding-bottom: .4rem; margin-bottom: 1.6rem; font-size: .9rem; color: #5c6675; }
+  h1 { font-size: 1.25rem; margin: 0 0 1rem; }
+  .zugang { border: 2px solid #1a2332; border-radius: .6rem; padding: 1rem 1.4rem;
+            margin: 1.2rem 0; display: grid; grid-template-columns: auto 1fr; gap: .35rem 1.5rem; }
+  .zugang dt { color: #5c6675; font-size: .85rem; align-self: center; }
+  .zugang dd { margin: 0; font-family: ui-monospace, Consolas, monospace;
+               font-size: 1.15rem; font-weight: 600; }
+  ol { padding-left: 1.2rem; } li { margin-bottom: .3rem; }
+  .fuss { margin-top: 1.6rem; font-size: .8rem; color: #5c6675;
+          border-top: 1px solid #e3e7ee; padding-top: .6rem; }
+  @media screen { .brief { border: 1px solid #e3e7ee; margin: 1rem auto; border-radius: .5rem; } }
+</style>
+</head>
+<body>
+{% for k in konten %}
+<div class="brief">
+  <div class="kopf">
+    <span><strong>{{ schule }}</strong> · IT</span>
+    <span>Klasse {{ k.klasse or "–" }} · {{ datum }}</span>
+  </div>
+  <h1>Dein Schul-Account, {{ k.anzeigename.split(" ")[0] }}!</h1>
+  <p>Hier sind deine Zugangsdaten für die Anmeldung an den Schulcomputern
+     und am WLAN. Bewahre dieses Blatt gut auf und zeige es niemandem.</p>
+  <dl class="zugang">
+    <dt>Name</dt><dd style="font-family: inherit; font-weight: 400;">{{ k.anzeigename }}</dd>
+    <dt>Benutzername</dt><dd>{{ k.benutzername }}</dd>
+    <dt>Startpasswort</dt><dd>{{ k.passwort }}</dd>
+  </dl>
+  <p><strong>Wichtig – deine ersten Schritte:</strong></p>
+  <ol>
+    <li>Melde dich mit Benutzername und Startpasswort an einem Schulcomputer an.</li>
+    <li>Du wirst sofort aufgefordert, ein <strong>eigenes neues Passwort</strong> zu wählen.
+        Das Startpasswort funktioniert danach nicht mehr.</li>
+    <li>Merke dir dein neues Passwort gut – bei Problemen hilft: {{ it_kontakt }}.</li>
+  </ol>
+  <div class="fuss">
+    Hinweis zum Datenschutz: Dein Konto wird automatisch aus den Daten der
+    Schulverwaltung erstellt und beim Verlassen der Schule wieder deaktiviert
+    und gelöscht. Fragen dazu beantwortet {{ it_kontakt }}.
+  </div>
+</div>
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# SchulSync – erzeugte Dateien mit personenbezogenen Daten NIEMALS committen!
+zugangsdaten-*.csv
+briefe/
+report-*.html
+schulsync.yaml
+!examples/schulsync.example.yaml
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SchulSync-Plan · Beispiel-Gesamtschule Musterstadt · 15.07.2026 17:37</title>
+<style>
+  :root {
+    --tinte: #1a2332; --grau: #5c6675; --linie: #e3e7ee; --papier: #f6f8fb;
+    --gruen: #1a7f4e; --gruen-bg: #e7f6ee;
+    --blau: #1f5fbf; --blau-bg: #e9f1fd;
+    --gelb: #9a6700; --gelb-bg: #fdf3d7;
+    --rot: #b3362c; --rot-bg: #fdecea;
+    --lila: #6f42c1; --lila-bg: #f1ebfb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    color: var(--tinte); background: var(--papier);
+    margin: 0; padding: 2.5rem 1.5rem; line-height: 1.5;
+  }
+  .blatt { max-width: 60rem; margin: 0 auto; }
+  header { display: flex; justify-content: space-between; align-items: baseline;
+           flex-wrap: wrap; gap: .5rem; border-bottom: 3px solid var(--tinte);
+           padding-bottom: .75rem; margin-bottom: 1.5rem; }
+  h1 { font-size: 1.5rem; margin: 0; }
+  h1 small { color: var(--grau); font-weight: 400; }
+  .meta { color: var(--grau); font-size: .9rem; text-align: right; }
+  .karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+            gap: .75rem; margin-bottom: 2rem; }
+  .karte { background: #fff; border: 1px solid var(--linie); border-radius: .6rem;
+           padding: .9rem 1rem; }
+  .karte .zahl { font-size: 1.9rem; font-weight: 700; line-height: 1.1; }
+  .karte .label { font-size: .8rem; color: var(--grau); text-transform: uppercase;
+                  letter-spacing: .04em; }
+  .karte.gruen .zahl { color: var(--gruen); } .karte.blau .zahl { color: var(--blau); }
+  .karte.gelb .zahl { color: var(--gelb); }  .karte.rot .zahl { color: var(--rot); }
+  .karte.lila .zahl { color: var(--lila); }
+  section { background: #fff; border: 1px solid var(--linie); border-radius: .6rem;
+            margin-bottom: 1.25rem; overflow: hidden; }
+  section > h2 { font-size: 1rem; margin: 0; padding: .7rem 1rem; display: flex;
+                 align-items: center; gap: .5rem; }
+  .marke { display: inline-block; min-width: 1.6rem; text-align: center; padding: .1rem .45rem;
+           border-radius: 99px; font-size: .8rem; font-weight: 700; }
+  section.gruen > h2 { background: var(--gruen-bg); } section.gruen .marke { background: var(--gruen); color:#fff; }
+  section.blau  > h2 { background: var(--blau-bg); }  section.blau  .marke { background: var(--blau); color:#fff; }
+  section.gelb  > h2 { background: var(--gelb-bg); }  section.gelb  .marke { background: var(--gelb); color:#fff; }
+  section.rot   > h2 { background: var(--rot-bg); }   section.rot   .marke { background: var(--rot); color:#fff; }
+  section.lila  > h2 { background: var(--lila-bg); }  section.lila  .marke { background: var(--lila); color:#fff; }
+  table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+  th { text-align: left; color: var(--grau); font-weight: 600; font-size: .8rem;
+       text-transform: uppercase; letter-spacing: .03em; }
+  th, td { padding: .5rem 1rem; border-top: 1px solid var(--linie); }
+  tbody tr:hover { background: var(--papier); }
+  code { background: var(--papier); border: 1px solid var(--linie); border-radius: .3rem;
+         padding: .05rem .35rem; font-size: .88em; }
+  .pfeil { color: var(--grau); padding: 0 .3rem; }
+  .hinweis { background: #fff; border: 1px dashed var(--linie); border-radius: .6rem;
+             padding: .8rem 1rem; color: var(--grau); font-size: .88rem; }
+  .konflikt td:last-child { color: var(--rot); }
+  footer { margin-top: 2rem; color: var(--grau); font-size: .8rem;
+           border-top: 1px solid var(--linie); padding-top: .75rem; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    section, .karte { border-color: #bbb; break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="blatt">
+  <header>
+    <h1>SchulSync-Plan <small>· Beispiel-Gesamtschule Musterstadt</small></h1>
+    <div class="meta">
+      15.07.2026 17:37<br>
+      Quelle: <code>/Users/haydarkozat/schulsync/examples/schild-export-2026.csv</code> · Ziel: <code>DC=schule,DC=local</code><br>
+      Modus: <strong>Apply (ausgeführt)</strong>
+    </div>
+  </header>
+
+  <div class="karten">
+    <div class="karte gruen"><div class="zahl">24</div><div class="label">Anlegen</div></div>
+    <div class="karte blau"><div class="zahl">125</div><div class="label">Klassenwechsel</div></div>
+    <div class="karte gelb"><div class="zahl">2</div><div class="label">Umbenennen</div></div>
+    <div class="karte lila"><div class="zahl">0</div><div class="label">Reaktivieren</div></div>
+    <div class="karte rot"><div class="zahl">24</div><div class="label">Deaktivieren</div></div>
+    <div class="karte"><div class="zahl">5</div><div class="label">Unverändert</div></div>
+  </div>
+
+  
+
+  
+  <section class="gruen">
+    <h2><span class="marke">＋</span> Anlegen (24)</h2>
+    <table>
+      <thead><tr><th>Name</th><th>Klasse</th><th>Benutzername</th><th>Rolle</th></tr></thead>
+      <tbody>
+      
+        <tr>
+          <td>Lina Aydın</td>
+          <td>5A</td>
+          <td><code>lina.aydin</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Anton Becker</td>
+          <td>5A</td>
+          <td><code>anton.becker</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Mia Bondarenko</td>
+          <td>5A</td>
+          <td><code>mia.bondarenko2</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Oskar Bondarenko</td>
+          <td>5A</td>
+          <td><code>oskar.bondarenko</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Amira Braun</td>
+          <td>5A</td>
+          <td><code>amira.braun</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Ben Haddad</td>
+          <td>5A</td>
+          <td><code>ben.haddad</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Elif Vogel</td>
+          <td>5A</td>
+          <td><code>elif.vogel</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Ida Weber</td>
+          <td>5A</td>
+          <td><code>ida.weber</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Elif Yılmaz</td>
+          <td>5A</td>
+          <td><code>elif.yilmaz</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Luca Yılmaz</td>
+          <td>5A</td>
+          <td><code>luca.yilmaz</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Mateusz Zieliński</td>
+          <td>5A</td>
+          <td><code>mateusz.zielinski</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Luca Đorđević</td>
+          <td>5A</td>
+          <td><code>luca.dordevic</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Ronja Bauer</td>
+          <td>5B</td>
+          <td><code>ronja.bauer</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Olena Becker</td>
+          <td>5B</td>
+          <td><code>olena.becker</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Anton Bondarenko</td>
+          <td>5B</td>
+          <td><code>anton.bondarenko</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Ida Bondarenko</td>
+          <td>5B</td>
+          <td><code>ida.bondarenko</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Sofia Demir</td>
+          <td>5B</td>
+          <td><code>sofia.demir</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Theo Groß</td>
+          <td>5B</td>
+          <td><code>theo.gross</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Sofia Kowalski</td>
+          <td>5B</td>
+          <td><code>sofia.kowalski2</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Ida Richter</td>
+          <td>5B</td>
+          <td><code>ida.richter</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Jonas Richter</td>
+          <td>5B</td>
+          <td><code>jonas.richter</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Jonas Schmitz</td>
+          <td>5B</td>
+          <td><code>jonas.schmitz</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Elif Yılmaz</td>
+          <td>5B</td>
+          <td><code>elif.yilmaz2</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+        <tr>
+          <td>Lea Öztürk</td>
+          <td>5B</td>
+          <td><code>lea.oeztuerk</code></td>
+          <td>Schüler:in</td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </section>
+  
+
+  
+  <section class="blau">
+    <h2><span class="marke">⇄</span> Klassenwechsel (125)</h2>
+    <table>
+      <thead><tr><th>Name</th><th>Benutzername</th><th>Wechsel</th></tr></thead>
+      <tbody>
+      
+        <tr>
+          <td>Jonas Aydın</td>
+          <td><code>jonas.aydin2</code></td>
+          <td>9A<span class="pfeil">→</span><strong>10A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Elif Braun</td>
+          <td><code>elif.braun</code></td>
+          <td>9A<span class="pfeil">→</span><strong>10A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Zeynep Böhm</td>
+          <td><code>zeynep.boehm</code></td>
+          <td>9A<span class="pfeil">→</span><strong>10A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Mia Kaya</td>
+          <td><code>mia.kaya2</code></td>
+          <td>9A<span class="pfeil">→</span><strong>10A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Jonas Kowalski</td>
+          <td><code>jonas.kowalski</code></td>
+          <td>9A<span class="pfeil">→</span><strong>10A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Sofia Krause</td>
+          <td><code>sofia.krause</code></td>
+          <td>9A<span class="pfeil">→</span><strong>10A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Hannah Lange</td>
+          <td><code>hannah.lange</code></td>
+          <td>9A<span class="pfeil">→</span><strong>10A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Felix Schmitz</td>
+          <td><code>felix.schmitz</code></td>
+          <td>9A<span class="pfeil">→</span><strong>10A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Konstantin-Alexander Wagenknecht</td>
+          <td><code>konstantin-alexander</code></td>
+          <td>9A<span class="pfeil">→</span><strong>10A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Lina Weber</td>
+          <td><code>lina.weber</code></td>
+          <td>9A<span class="pfeil">→</span><strong>10A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Luca Wolf</td>
+          <td><code>luca.wolf</code></td>
+          <td>9A<span class="pfeil">→</span><strong>10A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>David Çelik</td>
+          <td><code>david.celik2</code></td>
+          <td>9A<span class="pfeil">→</span><strong>10A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>David Çelik</td>
+          <td><code>david.celik3</code></td>
+          <td>9A<span class="pfeil">→</span><strong>10A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Elias Becker</td>
+          <td><code>elias.becker</code></td>
+          <td>9B<span class="pfeil">→</span><strong>10B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Ronja Frank</td>
+          <td><code>ronja.frank</code></td>
+          <td>9B<span class="pfeil">→</span><strong>10B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Emma Groß</td>
+          <td><code>emma.gross</code></td>
+          <td>9B<span class="pfeil">→</span><strong>10B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Melisa Kaya</td>
+          <td><code>melisa.kaya2</code></td>
+          <td>9B<span class="pfeil">→</span><strong>10B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Marie Koch</td>
+          <td><code>marie.koch</code></td>
+          <td>9B<span class="pfeil">→</span><strong>10B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Zeynep Koch</td>
+          <td><code>zeynep.koch</code></td>
+          <td>9B<span class="pfeil">→</span><strong>10B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Sofia Kowalski</td>
+          <td><code>sofia.kowalski</code></td>
+          <td>9B<span class="pfeil">→</span><strong>10B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Paul Schmitz</td>
+          <td><code>paul.schmitz</code></td>
+          <td>9B<span class="pfeil">→</span><strong>10B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Elias Vogel</td>
+          <td><code>elias.vogel</code></td>
+          <td>9B<span class="pfeil">→</span><strong>10B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Olena Wolf</td>
+          <td><code>olena.wolf2</code></td>
+          <td>9B<span class="pfeil">→</span><strong>10B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Amira Öztürk</td>
+          <td><code>amira.oeztuerk</code></td>
+          <td>9B<span class="pfeil">→</span><strong>10B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Finn Đorđević</td>
+          <td><code>finn.dordevic</code></td>
+          <td>9B<span class="pfeil">→</span><strong>10B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Clara Aydın</td>
+          <td><code>clara.aydin</code></td>
+          <td>5A<span class="pfeil">→</span><strong>6A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Clara Braun</td>
+          <td><code>clara.braun</code></td>
+          <td>5A<span class="pfeil">→</span><strong>6A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Selin Böhm</td>
+          <td><code>selin.boehm</code></td>
+          <td>5A<span class="pfeil">→</span><strong>6A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Felix Neumann</td>
+          <td><code>felix.neumann</code></td>
+          <td>5A<span class="pfeil">→</span><strong>6A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Karim Schmidt</td>
+          <td><code>karim.schmidt</code></td>
+          <td>5A<span class="pfeil">→</span><strong>6A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Theo Demir</td>
+          <td><code>theo.demir</code></td>
+          <td>5A<span class="pfeil">→</span><strong>6A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Milan Schmitz</td>
+          <td><code>milan.schmitz</code></td>
+          <td>5A<span class="pfeil">→</span><strong>6A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Jonas Wolf</td>
+          <td><code>jonas.wolf</code></td>
+          <td>5A<span class="pfeil">→</span><strong>6A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Łukasz Wróblewski</td>
+          <td><code>lukasz.wroblewski</code></td>
+          <td>5A<span class="pfeil">→</span><strong>6A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Elif Zieliński</td>
+          <td><code>elif.zielinski</code></td>
+          <td>5A<span class="pfeil">→</span><strong>6A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>David Çelik</td>
+          <td><code>david.celik</code></td>
+          <td>5A<span class="pfeil">→</span><strong>6A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Leon Đorđević</td>
+          <td><code>leon.dordevic</code></td>
+          <td>5A<span class="pfeil">→</span><strong>6A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Jonas Şahin</td>
+          <td><code>jonas.sahin</code></td>
+          <td>5A<span class="pfeil">→</span><strong>6A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Hannah Becker</td>
+          <td><code>hannah.becker</code></td>
+          <td>5B<span class="pfeil">→</span><strong>6B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Lina Bondarenko</td>
+          <td><code>lina.bondarenko</code></td>
+          <td>5B<span class="pfeil">→</span><strong>6B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Emma Böhm</td>
+          <td><code>emma.boehm</code></td>
+          <td>5B<span class="pfeil">→</span><strong>6B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Ida Haddad</td>
+          <td><code>ida.haddad</code></td>
+          <td>5B<span class="pfeil">→</span><strong>6B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Deniz Kaya</td>
+          <td><code>deniz.kaya</code></td>
+          <td>5B<span class="pfeil">→</span><strong>6B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Olena Müller</td>
+          <td><code>olena.mueller</code></td>
+          <td>5B<span class="pfeil">→</span><strong>6B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Fatma Richter</td>
+          <td><code>fatma.richter</code></td>
+          <td>5B<span class="pfeil">→</span><strong>6B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Deniz Schmitz</td>
+          <td><code>deniz.schmitz</code></td>
+          <td>5B<span class="pfeil">→</span><strong>6B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Emma Weber</td>
+          <td><code>emma.weber</code></td>
+          <td>5B<span class="pfeil">→</span><strong>6B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Selin Çelik</td>
+          <td><code>selin.celik</code></td>
+          <td>5B<span class="pfeil">→</span><strong>6B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Hannah Öztürk</td>
+          <td><code>hannah.oeztuerk</code></td>
+          <td>5B<span class="pfeil">→</span><strong>6B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Yusuf Şahin</td>
+          <td><code>yusuf.sahin</code></td>
+          <td>5B<span class="pfeil">→</span><strong>6B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Hannah Groß</td>
+          <td><code>hannah.gross</code></td>
+          <td>6A<span class="pfeil">→</span><strong>7A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Karim Kaya</td>
+          <td><code>karim.kaya</code></td>
+          <td>6A<span class="pfeil">→</span><strong>7A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Olena Kowalski</td>
+          <td><code>olena.kowalski</code></td>
+          <td>6A<span class="pfeil">→</span><strong>7A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Hannah Krüger</td>
+          <td><code>hannah.krueger</code></td>
+          <td>6A<span class="pfeil">→</span><strong>7A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Ben Lange</td>
+          <td><code>ben.lange</code></td>
+          <td>6A<span class="pfeil">→</span><strong>7A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Karim Neumann</td>
+          <td><code>karim.neumann</code></td>
+          <td>6A<span class="pfeil">→</span><strong>7A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Deniz Richter</td>
+          <td><code>deniz.richter</code></td>
+          <td>6A<span class="pfeil">→</span><strong>7A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Theo Öztürk</td>
+          <td><code>theo.oeztuerk</code></td>
+          <td>6A<span class="pfeil">→</span><strong>7A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Anton Đorđević</td>
+          <td><code>anton.dordevic</code></td>
+          <td>6A<span class="pfeil">→</span><strong>7A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Clara Đorđević</td>
+          <td><code>clara.dordevic</code></td>
+          <td>6A<span class="pfeil">→</span><strong>7A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Amira Şahin</td>
+          <td><code>amira.sahin</code></td>
+          <td>6A<span class="pfeil">→</span><strong>7A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Emir Şahin</td>
+          <td><code>emir.sahin</code></td>
+          <td>6A<span class="pfeil">→</span><strong>7A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Hannah Bauer</td>
+          <td><code>hannah.bauer</code></td>
+          <td>6B<span class="pfeil">→</span><strong>7B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Noah Frank</td>
+          <td><code>noah.frank</code></td>
+          <td>6B<span class="pfeil">→</span><strong>7B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Theo Kaya</td>
+          <td><code>theo.kaya</code></td>
+          <td>6B<span class="pfeil">→</span><strong>7B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Amira Koch</td>
+          <td><code>amira.koch</code></td>
+          <td>6B<span class="pfeil">→</span><strong>7B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>François N'Diaye</td>
+          <td><code>francois.n-diaye</code></td>
+          <td>6B<span class="pfeil">→</span><strong>7B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Deniz Schröder</td>
+          <td><code>deniz.schroeder</code></td>
+          <td>6B<span class="pfeil">→</span><strong>7B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Sofia Schröder</td>
+          <td><code>sofia.schroeder</code></td>
+          <td>6B<span class="pfeil">→</span><strong>7B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Milan Schäfer</td>
+          <td><code>milan.schaefer</code></td>
+          <td>6B<span class="pfeil">→</span><strong>7B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Hannah Vogel</td>
+          <td><code>hannah.vogel</code></td>
+          <td>6B<span class="pfeil">→</span><strong>7B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Felix Çelik</td>
+          <td><code>felix.celik</code></td>
+          <td>6B<span class="pfeil">→</span><strong>7B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Lea Çelik</td>
+          <td><code>lea.celik</code></td>
+          <td>6B<span class="pfeil">→</span><strong>7B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Nele Đorđević</td>
+          <td><code>nele.dordevic</code></td>
+          <td>6B<span class="pfeil">→</span><strong>7B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Ida Şahin</td>
+          <td><code>ida.sahin</code></td>
+          <td>6B<span class="pfeil">→</span><strong>7B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Finn Aydın</td>
+          <td><code>finn.aydin</code></td>
+          <td>7A<span class="pfeil">→</span><strong>8A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Deniz Bauer</td>
+          <td><code>deniz.bauer</code></td>
+          <td>7A<span class="pfeil">→</span><strong>8A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Olena Bauer</td>
+          <td><code>olena.bauer</code></td>
+          <td>7A<span class="pfeil">→</span><strong>8A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Nele Bondarenko</td>
+          <td><code>nele.bondarenko</code></td>
+          <td>7A<span class="pfeil">→</span><strong>8A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Zeynep Bondarenko</td>
+          <td><code>zeynep.bondarenko</code></td>
+          <td>7A<span class="pfeil">→</span><strong>8A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Emma Fischer</td>
+          <td><code>emma.fischer2</code></td>
+          <td>7A<span class="pfeil">→</span><strong>8A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Milan Kaya</td>
+          <td><code>milan.kaya</code></td>
+          <td>7A<span class="pfeil">→</span><strong>8A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Noah Kowalski</td>
+          <td><code>noah.kowalski</code></td>
+          <td>7A<span class="pfeil">→</span><strong>8A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Jonas Vogel</td>
+          <td><code>jonas.vogel</code></td>
+          <td>7A<span class="pfeil">→</span><strong>8A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Hannah Wagner</td>
+          <td><code>hannah.wagner</code></td>
+          <td>7A<span class="pfeil">→</span><strong>8A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Oskar Wagner</td>
+          <td><code>oskar.wagner</code></td>
+          <td>7A<span class="pfeil">→</span><strong>8A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Olena Wolf</td>
+          <td><code>olena.wolf</code></td>
+          <td>7A<span class="pfeil">→</span><strong>8A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Oskar Çelik</td>
+          <td><code>oskar.celik</code></td>
+          <td>7A<span class="pfeil">→</span><strong>8A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Amira Aydın</td>
+          <td><code>amira.aydin</code></td>
+          <td>7B<span class="pfeil">→</span><strong>8B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Noah Braun</td>
+          <td><code>noah.braun</code></td>
+          <td>7B<span class="pfeil">→</span><strong>8B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Ayşe Böhm</td>
+          <td><code>ayse.boehm</code></td>
+          <td>7B<span class="pfeil">→</span><strong>8B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Karim Böhm</td>
+          <td><code>karim.boehm</code></td>
+          <td>7B<span class="pfeil">→</span><strong>8B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Amira Demir</td>
+          <td><code>amira.demir</code></td>
+          <td>7B<span class="pfeil">→</span><strong>8B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Ben Kowalski</td>
+          <td><code>ben.kowalski</code></td>
+          <td>7B<span class="pfeil">→</span><strong>8B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Mateusz Krause</td>
+          <td><code>mateusz.krause2</code></td>
+          <td>7B<span class="pfeil">→</span><strong>8B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Mateusz Wolf</td>
+          <td><code>mateusz.wolf</code></td>
+          <td>7B<span class="pfeil">→</span><strong>8B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Zeynep Zieliński</td>
+          <td><code>zeynep.zielinski</code></td>
+          <td>7B<span class="pfeil">→</span><strong>8B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Ben Çelik</td>
+          <td><code>ben.celik</code></td>
+          <td>7B<span class="pfeil">→</span><strong>8B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Elias Öztürk</td>
+          <td><code>elias.oeztuerk</code></td>
+          <td>7B<span class="pfeil">→</span><strong>8B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Amira Đorđević</td>
+          <td><code>amira.dordevic</code></td>
+          <td>7B<span class="pfeil">→</span><strong>8B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>David Aydın</td>
+          <td><code>david.aydin</code></td>
+          <td>8A<span class="pfeil">→</span><strong>9A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Mia Bondarenko</td>
+          <td><code>mia.bondarenko</code></td>
+          <td>8A<span class="pfeil">→</span><strong>9A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Paul Böhm</td>
+          <td><code>paul.boehm</code></td>
+          <td>8A<span class="pfeil">→</span><strong>9A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Melisa Kaya</td>
+          <td><code>melisa.kaya</code></td>
+          <td>8A<span class="pfeil">→</span><strong>9A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Marie Kowalski</td>
+          <td><code>marie.kowalski</code></td>
+          <td>8A<span class="pfeil">→</span><strong>9A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Deniz Lange</td>
+          <td><code>deniz.lange</code></td>
+          <td>8A<span class="pfeil">→</span><strong>9A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Emir Richter</td>
+          <td><code>emir.richter</code></td>
+          <td>8A<span class="pfeil">→</span><strong>9A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Elias Schmidt</td>
+          <td><code>elias.schmidt</code></td>
+          <td>8A<span class="pfeil">→</span><strong>9A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Anton Schröder</td>
+          <td><code>anton.schroeder</code></td>
+          <td>8A<span class="pfeil">→</span><strong>9A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Jonas Schröder</td>
+          <td><code>jonas.schroeder</code></td>
+          <td>8A<span class="pfeil">→</span><strong>9A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Felix Zieliński</td>
+          <td><code>felix.zielinski</code></td>
+          <td>8A<span class="pfeil">→</span><strong>9A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Luca Çelik</td>
+          <td><code>luca.celik</code></td>
+          <td>8A<span class="pfeil">→</span><strong>9A</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Emma Fischer</td>
+          <td><code>emma.fischer3</code></td>
+          <td>8B<span class="pfeil">→</span><strong>9B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Leon Fischer</td>
+          <td><code>leon.fischer</code></td>
+          <td>8B<span class="pfeil">→</span><strong>9B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Nele Fischer</td>
+          <td><code>nele.fischer</code></td>
+          <td>8B<span class="pfeil">→</span><strong>9B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Lina Frank</td>
+          <td><code>lina.frank</code></td>
+          <td>8B<span class="pfeil">→</span><strong>9B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Mia Kaya</td>
+          <td><code>mia.kaya</code></td>
+          <td>8B<span class="pfeil">→</span><strong>9B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Milan Koch</td>
+          <td><code>milan.koch</code></td>
+          <td>8B<span class="pfeil">→</span><strong>9B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Anton Kowalski</td>
+          <td><code>anton.kowalski</code></td>
+          <td>8B<span class="pfeil">→</span><strong>9B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Deniz Krüger</td>
+          <td><code>deniz.krueger</code></td>
+          <td>8B<span class="pfeil">→</span><strong>9B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Luca Schäfer</td>
+          <td><code>luca.schaefer</code></td>
+          <td>8B<span class="pfeil">→</span><strong>9B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Milan Vogel</td>
+          <td><code>milan.vogel</code></td>
+          <td>8B<span class="pfeil">→</span><strong>9B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Yusuf Weber</td>
+          <td><code>yusuf.weber</code></td>
+          <td>8B<span class="pfeil">→</span><strong>9B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Elif Wolf</td>
+          <td><code>elif.wolf</code></td>
+          <td>8B<span class="pfeil">→</span><strong>9B</strong></td>
+        </tr>
+      
+        <tr>
+          <td>Emir Öztürk</td>
+          <td><code>emir.oeztuerk</code></td>
+          <td>8B<span class="pfeil">→</span><strong>9B</strong></td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </section>
+  
+
+  
+  <section class="gelb">
+    <h2><span class="marke">✎</span> Umbenennen (2)</h2>
+    <table>
+      <thead><tr><th>Benutzername</th><th>Bisher</th><th>Neu</th></tr></thead>
+      <tbody>
+      
+        <tr>
+          <td><code>theo.demir</code></td>
+          <td>Theo Demir</td>
+          <td><strong>Theo Schmidt-Yılmaz</strong></td>
+        </tr>
+      
+        <tr>
+          <td><code>karim.kaya</code></td>
+          <td>Karim Kaya</td>
+          <td><strong>Mia-Sophie Kaya</strong></td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </section>
+  
+
+  
+
+  
+  <section class="rot">
+    <h2><span class="marke">⏻</span> Deaktivieren – Abgänger (24)</h2>
+    <table>
+      <thead><tr><th>Name</th><th>Benutzername</th><th>Bisherige Klasse</th><th>Weiteres Vorgehen</th></tr></thead>
+      <tbody>
+      
+        <tr>
+          <td>Mateusz Becker</td>
+          <td><code>mateusz.becker</code></td>
+          <td>10A</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Piotr Demir</td>
+          <td><code>piotr.demir</code></td>
+          <td>10A</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Fatma Haddad</td>
+          <td><code>fatma.haddad</code></td>
+          <td>10A</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Mateusz Krause</td>
+          <td><code>mateusz.krause</code></td>
+          <td>10A</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Lea Lange</td>
+          <td><code>lea.lange</code></td>
+          <td>10A</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Zeynep Müller</td>
+          <td><code>zeynep.mueller</code></td>
+          <td>10A</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Amira Schröder</td>
+          <td><code>amira.schroeder</code></td>
+          <td>10A</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Leon Wagner</td>
+          <td><code>leon.wagner</code></td>
+          <td>10A</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Paul Wagner</td>
+          <td><code>paul.wagner</code></td>
+          <td>10A</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Marie Weber</td>
+          <td><code>marie.weber</code></td>
+          <td>10A</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Theo Weber</td>
+          <td><code>theo.weber</code></td>
+          <td>10A</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Melisa Şahin</td>
+          <td><code>melisa.sahin</code></td>
+          <td>10A</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Jonas Aydın</td>
+          <td><code>jonas.aydin</code></td>
+          <td>10B</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Ronja Böhm</td>
+          <td><code>ronja.boehm</code></td>
+          <td>10B</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Clara Demir</td>
+          <td><code>clara.demir</code></td>
+          <td>10B</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Milan Groß</td>
+          <td><code>milan.gross</code></td>
+          <td>10B</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Selin Groß</td>
+          <td><code>selin.gross</code></td>
+          <td>10B</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Marie Hoffmann</td>
+          <td><code>marie.hoffmann</code></td>
+          <td>10B</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Melisa Müller</td>
+          <td><code>melisa.mueller</code></td>
+          <td>10B</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Lina Vogel</td>
+          <td><code>lina.vogel</code></td>
+          <td>10B</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Mateusz Wagner</td>
+          <td><code>mateusz.wagner</code></td>
+          <td>10B</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Finn Weber</td>
+          <td><code>finn.weber</code></td>
+          <td>10B</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Fatma Zieliński</td>
+          <td><code>fatma.zielinski</code></td>
+          <td>10B</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+        <tr>
+          <td>Ronja Çelik</td>
+          <td><code>ronja.celik</code></td>
+          <td>10B</td>
+          <td>Abgänger-OU, Löschung nach 90 Tagen (<code>schulsync cleanup</code>)</td>
+        </tr>
+      
+      </tbody>
+    </table>
+  </section>
+  
+
+  
+
+  <footer>
+    Erzeugt von <strong>SchulSync 0.1.0</strong> am 15.07.2026 17:37.
+    Dieses Dokument enthält personenbezogene Daten – vertraulich behandeln und
+    nach Gebrauch löschen (Art. 5 Abs. 1 lit. e DSGVO).
+  </footer>
+</div>
+</body>
+</html>

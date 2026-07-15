@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint-und-unit:
+    name: Lint & Unit-Tests (Python ${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Installieren
+        run: pip install -e ".[dev]"
+      - name: Ruff (Lint)
+        run: ruff check src tests scripts
+      - name: Unit-Tests
+        run: pytest -q
+
+  integration:
+    name: Integration gegen echten Samba-AD-DC
+    runs-on: ubuntu-latest
+    needs: lint-und-unit
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Installieren
+        run: pip install -e ".[dev]"
+      - name: Lab-DC starten (Samba AD, Domäne SCHULE.LOCAL)
+        run: docker compose -f lab/docker-compose.yml up -d --build --wait
+      - name: Integrationstests
+        env:
+          SCHULSYNC_LDAP_PASSWORT: Lab-Kennwort-2026
+        run: pytest -m integration -o addopts='' -q
+      - name: Lab-Logs bei Fehlern
+        if: failure()
+        run: docker logs schulsync-lab-ad --tail 100
