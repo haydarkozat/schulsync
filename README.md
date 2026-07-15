@@ -17,7 +17,7 @@ nicht ins WLAN kommt.
 
 SchulSync macht daraus **einen Befehl mit Vorschau**:
 
-![schulsync plan](docs/images/plan-2026.svg)
+![schulsync plan](https://raw.githubusercontent.com/haydarkozat/schulsync/main/docs/images/plan-2026.svg)
 
 ## Das Prinzip: Terraform für Schülerkonten
 
@@ -73,7 +73,7 @@ Windows-1252) und Trennzeichen.
   verweigert SchulSync den Dienst. Passwörter stehen nie in Dateien,
   nur in `SCHULSYNC_LDAP_PASSWORT`.
 
-![schulsync apply](docs/images/apply-2026.svg)
+![schulsync apply](https://raw.githubusercontent.com/haydarkozat/schulsync/main/docs/images/apply-2026.svg)
 
 ## In 5 Minuten ausprobieren – mit echtem AD
 
@@ -109,14 +109,14 @@ schulsync apply examples/schild-export-2026.csv \
 schulsync briefe zugangsdaten-*.csv --loeschen --config lab/schulsync.lab.yaml
 ```
 
-Danach lohnt ein Blick in den HTML-Report ([Beispiel](docs/beispiel-report.html)):
+Danach lohnt ein Blick in den HTML-Report ([Beispiel](https://github.com/haydarkozat/schulsync/blob/main/docs/beispiel-report.html)):
 
-[![HTML-Report](docs/images/report-2026.png)](docs/beispiel-report.html)
+[![HTML-Report](https://raw.githubusercontent.com/haydarkozat/schulsync/main/docs/images/report-2026.png)](https://github.com/haydarkozat/schulsync/blob/main/docs/beispiel-report.html)
 
 Und weil SchulSync idempotent ist, sagt derselbe Befehl direkt danach
 schlicht die Wahrheit:
 
-![idempotenter zweiter Lauf](docs/images/plan-idempotent.svg)
+![idempotenter zweiter Lauf](https://raw.githubusercontent.com/haydarkozat/schulsync/main/docs/images/plan-idempotent.svg)
 
 ## Im echten Schulnetz
 
@@ -168,10 +168,10 @@ Nightly-Check im Monitoring.
   Fristablauf & Löschung.
 * Kein Mock spielt AD – was hier grün ist, lief gegen LDAP, TLS und
   `unicodePwd`-Realität.
-* [docs/funktionsweise.md](docs/funktionsweise.md) erklärt die
+* [docs/funktionsweise.md](https://github.com/haydarkozat/schulsync/blob/main/docs/funktionsweise.md) erklärt die
   Designentscheidungen (warum `CN = Benutzername`, warum `employeeNumber`
   als Schlüssel, warum diese Ausführungsreihenfolge).
-* [docs/dsgvo.md](docs/dsgvo.md): Datenminimierung, Löschkonzept,
+* [docs/dsgvo.md](https://github.com/haydarkozat/schulsync/blob/main/docs/dsgvo.md): Datenminimierung, Löschkonzept,
   TLS-Zwang – Datenschutz als Designgrundlage, nicht als Fußnote.
 
 > **Hinweis zu den Beispieldaten:** Alle Namen in `examples/` sind fiktiv
@@ -192,4 +192,4 @@ gewünscht hätte.
 [GitHub](https://github.com/haydarkozat) ·
 [LinkedIn](https://linkedin.com/in/haydar-kozat)
 
-Lizenz: [MIT](LICENSE)
+Lizenz: [MIT](https://github.com/haydarkozat/schulsync/blob/main/LICENSE)

@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "schulsync"
-version = "0.1.0"
+version = "0.1.1"
 description = "Schuljahreswechsel ohne Handarbeit: deklarative Synchronisation von Schülerkonten aus der Schulverwaltung (SchILD-NRW, ASV-BW, CSV) ins Active Directory."
 readme = "README.md"
 requires-python = ">=3.11"
